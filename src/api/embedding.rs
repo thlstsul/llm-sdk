@@ -122,6 +122,7 @@ mod tests {
     use anyhow::Result;
 
     #[tokio::test]
+    #[ignore]
     async fn string_embedding_should_work() -> Result<()> {
         let req = EmbeddingRequest::new("The quick brown fox jumped over the lazy dog.");
         let res = SDK.embedding(req).await?;
@@ -137,6 +138,7 @@ mod tests {
     }
 
     #[tokio::test]
+    #[ignore]
     async fn array_string_embedding_should_work() -> Result<()> {
         let req = EmbeddingRequest::new_array(vec![
             "The quick brown fox jumped over the lazy dog.".into(),

@@ -23,6 +23,7 @@ reqwest = { version = "0.11.23", default-features = false, features = [
   "json",
   "multipart",
   "rustls-tls",
+  "stream",
 ] }
 reqwest-middleware = "0.2.4"
 reqwest-retry = "0.3.0"
@@ -33,6 +34,7 @@ serde_json = "1.0.108"
 strum = { version = "0.25.0", features = ["derive"] }
 task-local-extensions = "0.1.4"
 tracing = "0.1.40"
+futures-util = "0.3.30"
 
 [dev-dependencies]
 ctor = "0.2.6"

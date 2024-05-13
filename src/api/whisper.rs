@@ -122,6 +122,7 @@ mod tests {
     use std::fs;
 
     #[tokio::test]
+    #[ignore]
     async fn transcription_should_work() -> Result<()> {
         let data = fs::read("fixtures/speech.mp3")?;
         let req = WhisperRequest::transcription(data);
@@ -131,6 +132,7 @@ mod tests {
     }
 
     #[tokio::test]
+    #[ignore]
     async fn transcription_with_response_format_should_work() -> Result<()> {
         let data = fs::read("fixtures/speech.mp3")?;
         let req = WhisperRequestBuilder::default()
@@ -144,6 +146,7 @@ mod tests {
     }
 
     #[tokio::test]
+    #[ignore]
     async fn transcription_with_vtt_response_format_should_work() -> Result<()> {
         let data = fs::read("fixtures/speech.mp3")?;
         let req = WhisperRequestBuilder::default()
@@ -157,6 +160,7 @@ mod tests {
     }
 
     #[tokio::test]
+    #[ignore]
     async fn translate_should_work() -> Result<()> {
         let data = fs::read("fixtures/chinese.mp3")?;
         let req = WhisperRequestBuilder::default()

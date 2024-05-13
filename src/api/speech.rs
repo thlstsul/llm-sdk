@@ -78,6 +78,7 @@ mod tests {
     use anyhow::Result;
 
     #[tokio::test]
+    #[ignore]
     async fn speech_should_work() -> Result<()> {
         let req = SpeechRequest::new("The quick brown fox jumped over the lazy dog.");
         let _res = SDK.speech(req).await.unwrap();

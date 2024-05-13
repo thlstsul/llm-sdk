@@ -6,6 +6,7 @@ pub use api::*;
 use anyhow::{anyhow, Result};
 use bytes::Bytes;
 use derive_builder::Builder;
+use futures_util::{future, StreamExt};
 use middleware::RetryMiddleware;
 use reqwest::Response;
 use reqwest_middleware::{ClientBuilder, ClientWithMiddleware, RequestBuilder};
@@ -74,9 +75,36 @@ impl LlmSdk {
         &self,
         req: ChatCompletionRequest,
     ) -> Result<ChatCompletionResponse> {
+        assert!(!req.stream.unwrap_or_default());
         let req = self.prepare_request(req);
         let res = req.send_and_log().await?;
         Ok(res.json::<ChatCompletionResponse>().await?)
+    }
+
+    pub async fn chat_stream(
+        &self,
+        req: ChatCompletionRequest,
+        mut f: impl FnMut(&ChatStreamResponse),
+    ) -> Result<()> {
+        assert!(req.stream.unwrap_or_default());
+        let req = self.prepare_request(req);
+        let res = req.send_and_log().await?;
+
+        let mut stream = res
+            .bytes_stream()
+            .filter(|i| future::ready(i.is_ok()))
+            .map(|i| {
+                let s = String::from_utf8(i.unwrap().to_vec()).unwrap();
+                s.split("\n\n")
+                    .map(|ss| ss.strip_prefix("data: "))
+                    .filter(|ss| matches!(ss, Some(sss) if !sss.is_empty() && "[DONE]" != *sss))
+                    .map(|ss| serde_json::from_str(ss.unwrap()).unwrap())
+                    .collect::<Vec<ChatStreamResponse>>()
+            });
+        while let Some(r) = stream.next().await {
+            r.iter().for_each(&mut f);
+        }
+        Ok(())
     }
 
     pub async fn create_image(&self, req: CreateImageRequest) -> Result<CreateImageResponse> {
