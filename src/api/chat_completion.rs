@@ -135,7 +135,6 @@ pub enum ChatCompletionMessage {
 #[derive(
     Debug,
     Clone,
-    Copy,
     Default,
     PartialEq,
     Eq,
@@ -147,7 +146,6 @@ pub enum ChatCompletionMessage {
     EnumVariantNames,
     EnumMessage,
 )]
-
 pub enum ChatCompleteModel {
     /// The default model. Currently, this is the gpt-3.5-turbo-1106 model.
     #[default]
@@ -167,13 +165,8 @@ pub enum ChatCompleteModel {
     #[strum(serialize = "gpt-4-turbo-vision")]
     Gpt4TurboVision,
 
-    #[serde(rename = "deepseek-chat")]
-    #[strum(serialize = "deepseek-chat")]
-    DeepSeekChat,
-
-    #[serde(rename = "deepseek-coder")]
-    #[strum(serialize = "deepseek-coder")]
-    DeepSeekCoder,
+    #[serde(untagged)]
+    Other(String),
 }
 
 #[derive(Debug, Clone, Serialize)]
