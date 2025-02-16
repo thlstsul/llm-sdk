@@ -607,31 +607,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "302d7ab3130588088d277783b1e2d2e10c9e9e4a16dd9050e6ec93fb3e7048f4"
 
 [[package]]
-name = "llm-sdk"
-version = "0.5.0"
-dependencies = [
- "anyhow",
- "async-trait",
- "bytes",
- "ctor",
- "derive_builder",
- "futures-util",
- "lazy_static",
- "reqwest",
- "reqwest-middleware",
- "reqwest-retry",
- "reqwest-tracing",
- "schemars",
- "serde",
- "serde_json",
- "strum",
- "task-local-extensions",
- "tokio",
- "tracing",
- "tracing-subscriber",
-]
-
-[[package]]
 name = "lock_api"
 version = "0.4.11"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -747,6 +722,31 @@ name = "once_cell"
 version = "1.19.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3fdb12b2476b595f9358c5161aa467c2438859caa136dec86c26fdd2efe17b92"
+
+[[package]]
+name = "openllm"
+version = "0.5.0"
+dependencies = [
+ "anyhow",
+ "async-trait",
+ "bytes",
+ "ctor",
+ "derive_builder",
+ "futures-util",
+ "lazy_static",
+ "reqwest",
+ "reqwest-middleware",
+ "reqwest-retry",
+ "reqwest-tracing",
+ "schemars",
+ "serde",
+ "serde_json",
+ "strum",
+ "task-local-extensions",
+ "tokio",
+ "tracing",
+ "tracing-subscriber",
+]
 
 [[package]]
 name = "overload"

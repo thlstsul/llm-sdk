@@ -1,16 +1,16 @@
 [package]
-name = "llm-sdk"
+name = "openllm"
 version = "0.5.0"
 edition = "2021"
 license = "MIT"
-documentation = "https://docs.rs/llm-sdk"
+documentation = "https://docs.rs/openllm"
 repository = "https://github.com/thlstsul/llm-sdk"
 homepage = "https://github.com/thlstsul/llm-sdk"
 description = """
 A simple SDK for OpenAI compatible API.
 """
 readme = "README.md"
-categories = ["API bindings"]
+categories = ["api-bindings"]
 keywords = ["openai", "deepseek", "llm", "sdk"]
 
 [dependencies]
