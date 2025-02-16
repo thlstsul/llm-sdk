@@ -165,6 +165,18 @@ pub enum ChatCompleteModel {
     #[strum(serialize = "gpt-4-turbo-vision")]
     Gpt4TurboVision,
 
+    #[serde(rename = "deepseek-chat")]
+    #[strum(serialize = "deepseek-chat")]
+    DeepSeekChat,
+
+    #[serde(rename = "deepseek-coder")]
+    #[strum(serialize = "deepseek-coder")]
+    DeepSeekCoder,
+
+    #[serde(rename = "deepseek-reasoner")]
+    #[strum(serialize = "deepseek-reasoner")]
+    DeepSeekReasoner,
+
     #[serde(untagged)]
     Other(String),
 }
