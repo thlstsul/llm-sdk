@@ -171,6 +171,7 @@ impl<T: JsonSchema> ToSchema for T {
         serde_json::to_value(schema_for!(Self)).unwrap()
     }
 }
+
 #[cfg(test)]
 #[ctor::ctor]
 fn init() {
