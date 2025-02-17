@@ -1,10 +1,10 @@
-# LLM-SDK
+# openllm
 
 SDK for OpenAI compatible APIs.
 
 ## Usage
 
-Add `llm-sdk` by using `cargo add llm-sdk`.
+Add `openllm` by using `cargo add openllm`.
 
 
 ## Features
